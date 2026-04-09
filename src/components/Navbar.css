@@ -1,0 +1,83 @@
+.navbar {
+  background-color: rgb(8, 79, 45);
+  height: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  height: 25px;
+  
+}
+.logo-link:hover{
+  border: 2px solid white;
+}
+.search-container {
+  display: flex;
+  flex: 1;
+  max-width: 400px;
+}
+.search-bar {
+  flex: 1;
+  border: none;
+  height: 40px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.search-btn {
+  display: flex;
+  align-items: center;
+  background-color: aqua;
+  height: 42px;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.search-icon {
+  height: 15px;
+}
+.header-link{
+  padding: 6px 6px;
+}
+.order-link {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+.order-link:hover{
+  border: 1px solid white;
+}
+.cart-link{
+    display: flex;
+    color: rgb(8, 79, 45);
+}
+.cart-link:hover{
+  border: 2px solid white;
+}
+.cart-icon {
+  width: 35px;
+  position: relative;
+}
+.cart-quantity {
+    position: absolute;
+    font-size: 20px;
+    right: 65px;
+    top: 10.5px;
+}
+
+.cart-text {
+    font-size: 20px;
+    color: white;
+}

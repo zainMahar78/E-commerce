@@ -1,0 +1,41 @@
+.order-div {
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+.order-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1.5;
+}
+.order-date, .order-total{
+    /* display: grid;
+    grid-template-columns: auto 1fr;
+    margin-right: 0; */
+} 
+.product-details{
+    margin-top: 10px;
+    display: flex;
+    
+    justify-content: space-between;
+
+}
+.product-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    
+}
+.add-to-cart-btn{
+    padding: 5px 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(25, 135, 84);
+    cursor: pointer;
+    color: aliceblue;
+}
+.track-package-btn{
+    padding: 10px 45px;
+    border-radius: 5px;
+    border: none;
+    
+}
