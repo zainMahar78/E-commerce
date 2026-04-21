@@ -1,0 +1,35 @@
+.main-div {
+    margin-top: 90px;
+}
+
+.payment-summary {
+    padding: 15px;
+   border: 1px solid rgb(235, 235, 235);
+   border-radius: 6px;
+   
+}
+.divider {
+    border: none;
+    border-top: 1px solid #e8e8e8;
+    margin: 14px 0;
+}
+.total-order {
+    font-size: larger;
+    font-weight: bolder;
+    color: #2d7a3a;
+    
+}
+.place-order-btn {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    margin-top: 5px;
+    background-color: #2d7a3a;
+    color: aliceblue;
+    transition: background-color 0.2 ease;
+}
+.place-order-btn:hover {
+    background-color: #255f2e;;
+}

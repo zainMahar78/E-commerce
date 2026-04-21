@@ -30,9 +30,9 @@ export function Products() {
   return (
     <>
       <Navbar />
-      <div className="all-products-container">
+      <div className="all-products-container row">
     {product.map((pro, index) => {
-     return <div className="product-container" key={index}>
+     return <div className="product-container col-lg-3 col-md-4 col-sm-6" key={index}>
           <div>
             <img src={pro.img} alt="" className="product-img" />
           </div>

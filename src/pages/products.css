@@ -1,5 +1,6 @@
 .all-products-container {
     display: flex;
+    padding-left: 10px;
 }
 .product-container {
     display: flex;

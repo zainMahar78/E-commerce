@@ -15,6 +15,9 @@
   height: 25px;
   
 }
+.mobile-logo {
+  display: none;
+}
 .logo-link:hover{
   border: 2px solid white;
 }
@@ -31,12 +34,13 @@
   border-bottom-left-radius: 5px;
   border-top-right-radius: 0px;
   border-top-right-radius: 0px;
+  min-width: 0;
 }
 .search-btn {
   display: flex;
   align-items: center;
   background-color: aqua;
-  height: 42px;
+  height: 40px;
   border: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -73,11 +77,41 @@
 .cart-quantity {
     position: absolute;
     font-size: 20px;
-    right: 65px;
-    top: 10.5px;
+    right: 55px;
+    top: 9px;
 }
 
 .cart-text {
     font-size: 20px;
     color: white;
+}
+@media (max-width: 768px) {
+ 
+  .search-container{
+    max-width: 250px;
+  }
+  .cart-quantity {
+    right: 50px
+  }
+  .logo {
+    display: none; 
+   }
+   .mobile-logo {
+    display: block;
+    height: 25px;
+   }
+   .cart-icon {
+    width: 25px;
+   }
+}
+@media (max-width: 480px) {
+  .search-container {
+    max-width: 160px;
+  }
+  .logo {
+    height: 20px; 
+   }
+   .cart-icon {
+    width: 25px;
+   }
 }
