@@ -33,3 +33,24 @@
 .place-order-btn:hover {
     background-color: #255f2e;;
 }
+.delivery-date {
+    color: #255f2e;
+}
+.image-details {
+    display: flex;
+    flex-direction: row;
+}
+.update-delete-links {
+    text-decoration: none;
+    color: #255f2e;
+}
+.product-div {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgb(228, 225, 225);
+    border-radius: 5px;
+} 
+.product-image {
+    width: 100px;
+    margin: 5px;
+}

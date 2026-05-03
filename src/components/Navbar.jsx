@@ -5,7 +5,11 @@ import cartIcon from "../assets/images/cart-icon.png"
 import mobilelog from "../assets/images/mobile-logo.png";
 import "./Navbar.css";
 
-export function Navbar() {
+export function Navbar( {cart}) {
+   let totalQuantity =  (cart || []).reduce((total, item) => {
+  return total + (item.quantity || 0);
+}, 0);;
+   
   return (
     
     <nav className="navbar">
@@ -25,7 +29,7 @@ export function Navbar() {
       </Link>
       <Link to="/Checkout" className="cart-link header-link">
         <img src={cartIcon} alt="" className="cart-icon"/>
-        <div className="cart-quantity">3</div>
+        <div className="cart-quantity">{totalQuantity}</div>
         <div className="cart-text">Cart</div>
       </Link>
     </nav>
