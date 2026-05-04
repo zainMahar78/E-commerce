@@ -1,24 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Navbar } from "../components/Navbar";
-import { formatMoney } from "../utils/money";
-import "./products.css";
-export function Products( {cart}) {
-  const [products, setProduct] = useState([]);
-  
-  
-
-    useEffect(()=>{
-axios.get("/api/products").then((response) => {
-      setProduct(response.data);
-    })
-    }, [])
-
-  return (
-    <>
-      <Navbar cart={cart}/>
-      <div className="all-products-container row">
-        {products.map((pro) => {
+import { formatMoney } from "../../utils/money";
+export function ProductContainer({products}){
+ return(  <>
+     {products.map((pro) => {
           return (
             <div
               className="product-container col-lg-3 col-md-4 col-sm-6"
@@ -59,8 +42,6 @@ axios.get("/api/products").then((response) => {
               <button className="addtocart-btn">Add to Cart</button>
             </div>
           );
-        })}{" "}
-      </div>
-    </>
-  );
-  }
+        })}</> 
+        );
+}

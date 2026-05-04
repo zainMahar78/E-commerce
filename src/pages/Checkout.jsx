@@ -8,10 +8,18 @@ import "./Checkout.css";
 import { Link } from "react-router";
 export function Checkout( {cart}) {
  const [deliveryOptions, setDeliveryOptions] = useState([])
+const [paymentSummary, setPaymentSummary] = useState(null);
  useEffect(()=> {
   axios.get('/api/delivery-options?expand=estimatedDeliveryTime').then((response)=>{
     setDeliveryOptions(response.data)
   })
+  axios.get('http://localhost:3000/api/payment-summary').then((response)=>{
+setPaymentSummary(response.data)
+  }).catch((error) => {
+    console.error('Status:', error.response?.status);
+    console.error('Message:', error.message);
+    console.error('URL:', error.config?.url);
+  });
  }, [])
   return (
     <>
@@ -22,27 +30,27 @@ export function Checkout( {cart}) {
           <h5>Payment Summary</h5>
 
           <div className="d-flex justify-content-between">
-            <span>Items(3):</span>
-            <span>$42.75</span>
+            <span>Items({!paymentSummary ? 'Loading...' : paymentSummary.totalItems}):</span>
+            <span>{!paymentSummary ? 'Loading...' : formatMoney(paymentSummary.productCostCents)}</span>
           </div>
           <div className="d-flex justify-content-between">
             <span>Shipping & handling:</span>
 
-            <span>$4.99</span>
+            <span>{!paymentSummary ? 'Loading...' : formatMoney(paymentSummary.shippingCostCents)}</span>
           </div>
           <hr className="divider" />
           <div className="d-flex justify-content-between">
             <span>Total before tax:</span>
-            <span>$47.74</span>
+            <span>{!paymentSummary ? 'Loading...' : formatMoney(paymentSummary.totalCostBeforeTaxCents)}</span>
           </div>
           <div className="d-flex justify-content-between">
             <span>Estimated tax (10%):</span>
-            <span>$4.77</span>
+            <span>{!paymentSummary ? 'Loading...' : formatMoney(paymentSummary.taxCents)}</span>
           </div>
           <hr />
           <div className="total-order d-flex justify-content-between">
             <span>Order total:</span>
-            <span>$52.51</span>
+            <span>{!paymentSummary ? 'Loading...' : formatMoney(paymentSummary.totalCostCents)}</span>
           </div>
           <div>
             <button className="place-order-btn" type="button">

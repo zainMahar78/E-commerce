@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
-import { Products } from "./pages/Products";
+import { Products } from "./pages/home/Products";
 import { Orders } from "./pages/Orders";
 import { Checkout } from "./pages/Checkout";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Products cart={cart}/>}></Route>
-      <Route path="/Orders" element={<Orders/>}></Route>
+      <Route path="/Orders" element={<Orders cart={cart}/>}></Route>
       <Route path="/Checkout" element={<Checkout cart={cart}/>}></Route>
     </Routes>
   );

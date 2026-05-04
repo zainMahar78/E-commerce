@@ -1,17 +1,25 @@
 import { Navbar } from "../components/Navbar";
+import axios from 'axios'
+import dayjs from "dayjs";
+import { formatMoney } from "../utils/money";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./Orders.css";
-import socks from "../assets/images/athletic-cotton-socks-6-pairs.jpg";
-import shirt from "../assets/images/adults-plain-cotton-tshirt-2-pack-teal.jpg"
-export function Orders() {
-  const addToCartProducts = [{ img: socks, text: "Black and Gray Athletic Cotton Socks - 6 Pairs", deliverDate: "Arriving on: August 15", quantity: "1"},
-    {img: shirt, text: "Adults Plain Cotton T-Shirt - 2 Pack", deliverDate: "Arriving on: August 19", quantity: "2"}
-  ]
+export function Orders( {cart} ) {
+  const [orders, setOrders] = useState([]);
+  useEffect(()=>{
+    axios.get('/api/orders?expand=products').then((response)=>{
+      setOrders(response.data)
+    })
+  }, [])
   return (
     <>
       <title>Orders</title>
-      <Navbar />
-      <div className="container main-container">
+      <Navbar cart={cart}/>
+      
+      {orders.map((order)=>{
+
+      return  <div key={order.id} className="container main-container">
 
       
       <div className="order-div">
@@ -24,29 +32,29 @@ export function Orders() {
       <div className="order-container">
         <div className="order-date">
           <div>Order placed:</div>
-          <div>August 12</div>
+          <div>{dayjs(order.orderTimeMs).format('MMMM D')}</div>
         </div>
         <div className="order-total">
           <div>Total:</div>
-          <div>$35.06</div>
+          <div>{formatMoney(order.totalCostCents)}</div>
         </div>
         <div>
           <div>Order ID:</div>
-          <div>27cba69d-4c3d-4098-b42d-ac7fa62b7664</div>
+          <div>{order.id}</div>
         </div>
       </div>
       {/* add to cart product details */}
-      {addToCartProducts.map((product)=>{
-return(   
-      <div className="product-details">
-        <img src={product.img} alt="" height={100} />
+      {order.products.map((orderProduct)=>{
+        return(   
+          <div key={orderProduct.productid} className="product-details">
+        <img src={orderProduct.product.image} alt="" height={100} />
         <div className="cart-track-btn">
           <div >
             <div className="product-title">
-              {product.text}
+              {orderProduct.product.name}
             </div>
-            <div className="delivery-date">{product.deliverDate}</div>
-            <div className="quantity">Quantity: {product.quantity}</div>
+            <div className="delivery-date">{dayjs(orderProduct.estimatedDeliveryTimeMs).format('MMMM D')}</div>
+            <div className="quantity">Quantity: {orderProduct.quantity}</div>
            <div className="cart-btn">
              <button className="add-to-cart-btn">Add to cart</button>
             
@@ -59,6 +67,7 @@ return(
       </div>)})}
       </div>
   </div>
+      })}
     </>
   ); 
 }
